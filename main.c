@@ -6,55 +6,58 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 19:06:40 by jfieux            #+#    #+#             */
-/*   Updated: 2021/06/23 11:57:59 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/08/16 18:26:41 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int		ft_atoi(char *str)
-{
-	int			i;
-	int			sign;
-	long int	res;
-
-	i = 0;
-	sign = 1;
-	res = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -sign;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		res = (res * 10) + (str[i] - '0');
-		i++;
-		if (sign == 1 && res > 922337203685477580)
-			return (-1);
-		else if (res > 922337203685477580)
-			return (0);
-	}
-	return (res * sign);
-}
-
 #include <stdio.h>
 
-int main(int ac, char **av)
+int		init_struct(t_struct *info, int ac, char **av)
 {
-	int a[ac - 1];
-	int b[ac - 1];
 	int i;
+t_list **lst;
 
-	if (ac < 2)
-		return (0);
+	info = malloc(sizeof(t_struct));
+	if (!info)
+		return (-1);
+	info->start_a = malloc(sizeof(t_list));
+	if (!info->start_a)
+		return (-1);
+	info->start_b = malloc(sizeof(t_list));
+	if (!info->start_b)
+		return (-1);
 	i = 1;
 	while (i < ac)
 	{
-		a[i - 1] = ft_atoi(av[i]);
+		if (ft_lstadd_back(info->start_a, av[i]) < 0)
+			return (-1);
 		i++;
+	}
+
+lst = info->start_a;
+printf("stack a:\n");
+i = ft_lstsize(*lst);
+printf("size_a = %d\n\n", i);
+
+lst = info->start_b;
+printf("stack b:\n");
+i = ft_lstsize(*lst);
+printf("size_b = %d\n", i);
+
+	return (0);
+}
+
+int		main(int ac, char **av)
+{
+	t_struct *info;
+
+	if (ac < 2)
+		return (0);
+	info = NULL;
+	if (init_struct(info, ac, av) < 0)
+	{
+		ft_putstr("Error\n", 1);
+		return (0);
 	}
 }

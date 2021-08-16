@@ -6,13 +6,15 @@
 #    By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/16 15:04:16 by jfieux            #+#    #+#              #
-#    Updated: 2021/06/22 19:07:34 by jfieux           ###   ########.fr        #
+#    Updated: 2021/08/16 18:17:29 by jfieux           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= push_swap
 
-SRCS			=	push_swap.c
+SRCS			=	tool_box.c \
+					main.c \
+					op_swap_push.c
 OBJS			= $(SRCS:.c=.o)
 
 CC				= gcc
