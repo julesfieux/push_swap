@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 19:06:40 by jfieux            #+#    #+#             */
-/*   Updated: 2021/11/03 18:01:36 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/11/04 09:54:32 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int		main(int argc, char **argv)
 		begin->ba = ft_build_stack_str(argv[1]);
 	else				//init si la stack est défini en plusieurs arguments
 		begin->ba = ft_build_stack(argc, argv);
-	//if (ft_is_sort(&begin->ba, 1) != 0)		//si stack a est triée retourne 0
-	//	ft_algo(begin);
+	if (ft_is_sort(&begin->ba, 1) != 0)		//si stack a est triée retourne 0
+		ft_algo(begin);
 	//ft_lstdel2(&begin->ba);
 	//ft_lstdel2(&begin->bb);
 	//ft_lstdel2(&begin->inst);

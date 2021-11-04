@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 12:01:24 by jfieux            #+#    #+#             */
-/*   Updated: 2021/11/03 18:00:30 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/11/04 10:10:42 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,30 @@ t_stack		*ft_stacknew(int n)
 	new->data = n;
 	new->next = NULL;
 	return (new);
+}
+
+void		ft_rr(t_stack **bi)
+{
+	t_stack		*elem;
+	int			tmp;
+	int			tmp2;
+	int			i;
+
+	elem = *bi;
+	i = 0;
+	while (elem != NULL)
+	{
+		if (i % 2 != 0)
+		{
+			tmp2 = elem->data;
+			elem->data = tmp;
+		}
+		else if (i % 2 == 0)
+		{
+			tmp = elem->data;
+			elem->data = tmp2;
+		}
+		i++;
+		elem = elem->next;
+	}
 }
