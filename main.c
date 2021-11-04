@@ -6,58 +6,31 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 19:06:40 by jfieux            #+#    #+#             */
-/*   Updated: 2021/08/16 18:26:41 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/11/03 18:01:36 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-int		init_struct(t_struct *info, int ac, char **av)
+int		main(int argc, char **argv)
 {
-	int i;
-t_list **lst;
+	t_begin		*begin;
 
-	info = malloc(sizeof(t_struct));
-	if (!info)
-		return (-1);
-	info->start_a = malloc(sizeof(t_list));
-	if (!info->start_a)
-		return (-1);
-	info->start_b = malloc(sizeof(t_list));
-	if (!info->start_b)
-		return (-1);
-	i = 1;
-	while (i < ac)
-	{
-		if (ft_lstadd_back(info->start_a, av[i]) < 0)
-			return (-1);
-		i++;
-	}
-
-lst = info->start_a;
-printf("stack a:\n");
-i = ft_lstsize(*lst);
-printf("size_a = %d\n\n", i);
-
-lst = info->start_b;
-printf("stack b:\n");
-i = ft_lstsize(*lst);
-printf("size_b = %d\n", i);
-
+	begin = ft_init_begin();
+	begin->bb = NULL;
+	begin->inst = NULL;
+	if (argc == 1)		//pas besoin de trier
+		exit(0);
+	if (argc == 2)		//init si la stack est defini en une string
+		begin->ba = ft_build_stack_str(argv[1]);
+	else				//init si la stack est défini en plusieurs arguments
+		begin->ba = ft_build_stack(argc, argv);
+	//if (ft_is_sort(&begin->ba, 1) != 0)		//si stack a est triée retourne 0
+	//	ft_algo(begin);
+	//ft_lstdel2(&begin->ba);
+	//ft_lstdel2(&begin->bb);
+	//ft_lstdel2(&begin->inst);
+	free(begin);
 	return (0);
 }
 
-int		main(int ac, char **av)
-{
-	t_struct *info;
-
-	if (ac < 2)
-		return (0);
-	info = NULL;
-	if (init_struct(info, ac, av) < 0)
-	{
-		ft_putstr("Error\n", 1);
-		return (0);
-	}
-}

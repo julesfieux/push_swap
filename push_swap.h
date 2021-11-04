@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 19:04:42 by jfieux            #+#    #+#             */
-/*   Updated: 2021/08/16 18:19:36 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/11/04 09:23:57 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,31 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct		s_list
+typedef struct		s_stack
 {
-	int				nb;
-	struct s_list	*next;
-}					t_list;
+	struct s_stack	*next;
+	int				data;
+}					t_stack;
 
-typedef struct		s_struct
+typedef struct		s_begin
 {
-	char			*res;
-	t_list			**start_a;
-	t_list			**start_b;
-	
-}					t_struct;
+	struct s_stack	*ba;
+	struct s_stack	*bb;
+	struct s_stack	*inst;
+}					t_begin;
 
-void	ft_putstr(char *s, int fd);
-char	*ft_strjoin(char *s1, char *s2);
-int		ft_lstadd_back(t_list **start, char *nb);
-int		ft_lstsize(t_list *lst);
-int		swap_a(t_struct *info);
+t_begin				*ft_init_begin(void);
+void				ft_bzero(void *s, size_t n);
+t_stack				*ft_build_stack_str(char *argv);
+char				**ft_split(char const *s, char c, int i, int j);
+int					ft_atoi(char *str);
+void				ft_check_doublon_str(int *tab, int i, int n);
+t_stack				*ft_stacknew(int n);
+t_stack				*ft_build_stack(int argc, char **argv);
+int					ft_is_sort(t_stack **begin, int stack);
+int					ft_find_len(t_stack **bi);
+
+
 
 
 #endif
