@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 19:04:42 by jfieux            #+#    #+#             */
-/*   Updated: 2021/11/04 10:09:25 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/11/04 10:27:43 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ void				ft_sort_3_elem(t_begin *begin);
 t_stack				*ft_rotate_stack(t_stack **bi);
 t_stack				*ft_reverse_rotate_stack(t_stack **bi);
 void				ft_rr(t_stack **bi);
+void				ft_sort_min_a(t_begin *begin);
+int					ft_median(t_stack **begin, int stack, int n);
+int					ft_compare_with_median(t_begin *begin, int n, int median, int stack);
+t_stack				*ft_push_stack(t_stack **bf, t_stack **bi);
+void				ft_work_a(t_begin *begin, int len);
 
 
 

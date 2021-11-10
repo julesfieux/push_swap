@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 18:07:45 by jfieux            #+#    #+#             */
-/*   Updated: 2021/11/03 18:09:03 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/11/04 10:24:01 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,79 @@ int		ft_is_sort(t_stack **begin, int stack)
 		}
 		else
 			return (1);
+	}
+	return (0);
+}
+
+void	ft_sort_tab(int *tab, int len)
+{
+	int		i;
+	int		tmp;
+	int		n;
+
+	i = 0;
+	n = i;		//c'est degueut met 0
+	while (i < len - 1)
+	{
+		if (tab[i] > tab[i + 1])
+		{
+			tmp = tab[i];
+			tab[i] = tab[i + 1];
+			tab[i + 1] = tmp;
+			i = n;		//pk pas mettre 0 direct
+		}
+		else
+			i++;
+	}
+	i = n;		//à quoi ca sert
+}
+
+int		ft_median(t_stack **begin, int stack, int n)
+{
+	t_stack	*tmp;	//stack a
+	int		i;		//count
+	int		*tab;	//tableau des chiffre de la stack a
+	int		len;	//inutile, autant utiliser n	//len stack a
+	int		median;	//chiffre au milieu de la stack dans l'odre croissant
+
+	i = 0;
+	len = n;
+	if (!(tab = (int *)malloc(sizeof(int) * (len + 1))))
+		exit(1);
+	tmp = *begin;
+	while (i < len)
+	{
+		tab[i] = tmp->data;
+		i++;
+		tmp = tmp->next;
+	}
+	ft_sort_tab(tab, len);	//trie tout le tab
+	if (stack == 2 && len % 2 == 0)
+		median = tab[(len / 2) - 1];
+	else
+		median = tab[(len / 2)];
+	free(tab);
+	return (median);
+}
+
+int		ft_compare_with_median(t_begin *begin, int n, int median, int stack)
+{
+	int		i;		//count
+	t_stack	*elem;	//stack a ou b en fonction de stack
+
+	i = 0;
+	if (stack == 1)
+		elem = begin->ba;
+	else if (stack == 2)
+		elem = begin->bb;
+	while (i < n)
+	{
+		if (stack == 1 && elem->data < median)
+			return (1);
+		if (stack == 2 && elem->data > median)
+			return (1);
+		i++;
+		elem = elem->next;
 	}
 	return (0);
 }

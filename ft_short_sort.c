@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 09:57:56 by jfieux            #+#    #+#             */
-/*   Updated: 2021/11/04 10:10:52 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/11/04 10:16:19 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,31 @@ void			ft_sort_3_elem(t_begin *begin)
 		}
 		else if (begin->ba != NULL && ft_is_sort(&begin->ba, 1) != 0)
 			ft_rot(&elem, &suiv, begin);
+	}
+}
+
+void			ft_sort_min_a(t_begin *begin)
+{
+	int	len;
+
+	len = ft_find_len(&begin->ba);
+	if (len > 1 && begin->ba->data > begin->ba->next->data)
+	{
+		begin->ba = ft_swap_stack(&begin->ba);
+		ft_instruction(&begin->inst, 1);
+	}
+	if (len > 2 && begin->ba->next->data > begin->ba->next->next->data)
+	{
+		begin->ba = ft_rotate_stack(&begin->ba);
+		begin->ba = ft_swap_stack(&begin->ba);
+		begin->ba = ft_reverse_rotate_stack(&begin->ba);
+		ft_instruction(&begin->inst, 5);
+		ft_instruction(&begin->inst, 1);
+		ft_instruction(&begin->inst, 7);
+	}
+	if (len > 1 && begin->ba->data > begin->ba->next->data)
+	{
+		begin->ba = ft_swap_stack(&begin->ba);
+		ft_instruction(&begin->inst, 1);
 	}
 }
