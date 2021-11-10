@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 12:01:24 by jfieux            #+#    #+#             */
-/*   Updated: 2021/11/04 10:10:42 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/11/10 11:37:11 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,17 @@ void		ft_rr(t_stack **bi)
 		i++;
 		elem = elem->next;
 	}
+}
+
+void		ft_lstdel2(t_stack **begin)
+{
+	t_stack	*tmp;
+
+	while (*begin != NULL)
+	{
+		tmp = (*begin)->next;
+		free(*begin);
+		*begin = tmp;
+	}
+	free(*begin);
 }
