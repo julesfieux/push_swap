@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 10:12:15 by jfieux            #+#    #+#             */
-/*   Updated: 2021/11/04 10:28:54 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/11/10 11:32:47 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,31 @@ static void		ft_median_sort(t_begin *begin, int len, int *r, int *p)
 	}
 }
 
+static void		ft_place_a(t_begin *begin, int *r)
+{
+	int		lena;	//new len de la stack a
+
+	lena = ft_find_len(&begin->ba);
+	if (*r > (lena / 2) && lena > 3)
+	{
+		while (*r < lena)
+		{
+			begin->ba = ft_rotate_stack(&begin->ba);
+			ft_instruction(&begin->inst, 5);
+			*r = *r + 1;
+		}
+	}
+	else if (lena > 3)
+	{
+		while (*r)
+		{
+			begin->ba = ft_reverse_rotate_stack(&begin->ba);
+			ft_instruction(&begin->inst, 7);
+			*r = *r - 1;
+		}
+	}
+}
+
 void			ft_work_a(t_begin *begin, int len)
 {
 	int			r;
@@ -55,9 +80,9 @@ void			ft_work_a(t_begin *begin, int len)
 	if (begin->ba != NULL && ft_is_sort(&begin->ba, 1) == 0)	//si triée, arrete la
 		return ;
 	ft_median_sort(begin, len, &r, &p);		//premier trie en fonction du chiffre median
-	//ft_place(begin, &r);		//remet la stack a dans le meme ordre qu'avant median_sort mais sans les chiffres push dans la stack b
+	ft_place_a(begin, &r);		//remet la stack a dans le meme ordre qu'avant median_sort mais sans les chiffres push dans la stack b
 	ft_work_a(begin, (len - p));	//recursive de ce qu'on vient de faire
-	//ft_work_b(begin, p);
+	ft_work_b(begin, p);
 	while (p-- && begin->bb != NULL)
 	{
 		tmp = begin->bb->next;
