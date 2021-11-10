@@ -12,33 +12,35 @@
 
 #include "push_swap.h"
 
-t_begin		*ft_init_begin(void)
+t_begin	*ft_init_begin(void)
 {
 	t_begin		*begin;
 
-	if (!(begin = (t_begin*)malloc(sizeof(t_begin))))		//(t_begin*)?
+	begin = (t_begin *)malloc(sizeof(t_begin));		//(t_begin*)?
+	if (!begin)
 		exit(1);
 	ft_bzero(begin, sizeof(t_begin));		//initialise begin à 0
 	return (begin);
 }
 
-t_stack		*ft_stacknew(int n)
+t_stack	*ft_stacknew(int n)
 {
 	t_stack		*new;
 
-	if (!(new = (t_stack*)malloc(sizeof(t_stack))))
+	new = (t_stack *)malloc(sizeof(t_stack));
+	if (!new)
 		exit(0);
 	new->data = n;
 	new->next = NULL;
 	return (new);
 }
 
-void		ft_rr(t_stack **bi)
+void	ft_rr(t_stack **bi)
 {
-	t_stack		*elem;
-	int			tmp;
-	int			tmp2;
-	int			i;
+	t_stack	*elem;
+	int		tmp;
+	int		tmp2;
+	int		i;
 
 	elem = *bi;
 	i = 0;
@@ -59,7 +61,7 @@ void		ft_rr(t_stack **bi)
 	}
 }
 
-void		ft_lstdel2(t_stack **begin)
+void	ft_lstdel2(t_stack **begin)
 {
 	t_stack	*tmp;
 
