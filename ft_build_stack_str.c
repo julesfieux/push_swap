@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 12:08:51 by jfieux            #+#    #+#             */
-/*   Updated: 2021/11/03 18:00:27 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/11/10 11:47:22 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,8 @@ static int		*ft_fill_tab(char *str, int n)
 	int		*tab;
 	int		i;
 	char	**s;
-	int		j;
 
 	i = 0;
-	j = 0;
 	if (!(tab = (int *)malloc(sizeof(int) * (n + 1))))		//je ne crois pas que le '+1' est du sens
 		exit(1);
 	s = ft_split(str, ' ', 0, 0);
