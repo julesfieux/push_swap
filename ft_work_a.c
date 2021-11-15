@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 10:12:15 by jfieux            #+#    #+#             */
-/*   Updated: 2021/11/10 11:32:47 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/11/12 15:42:52 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void			ft_work_a(t_begin *begin, int len)
 	while (p-- && begin->bb != NULL)
 	{
 		tmp = begin->bb->next;
-		begin->ba = //ft_push_stack(&begin->ba, &begin->bb);
+		begin->ba = ft_push_stack(&begin->ba, &begin->bb);
 		begin->bb = tmp;
 		ft_instruction(&begin->inst, 3);
 	}

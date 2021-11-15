@@ -6,14 +6,16 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 19:04:42 by jfieux            #+#    #+#             */
-/*   Updated: 2021/11/10 11:48:21 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/11/12 15:25:20 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../ft_printf/ft_printf.h"
+# include "unistd.h"
+# include "stdlib.h"
+# include "stdio.h"
 
 typedef struct		s_stack
 {

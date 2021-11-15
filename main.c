@@ -6,11 +6,24 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 19:06:40 by jfieux            #+#    #+#             */
-/*   Updated: 2021/11/10 11:37:42 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/11/12 15:43:29 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	print_stack(t_begin *begin)
+{
+	t_stack *stack;
+
+	stack = begin->ba;
+	printf("\nstack a:\n");
+	while (stack != NULL)
+	{
+		printf("%d\n", stack->data);
+		stack = stack->next;
+	}
+}
 
 int		main(int argc, char **argv)
 {
@@ -27,6 +40,7 @@ int		main(int argc, char **argv)
 		begin->ba = ft_build_stack(argc, argv);
 	if (ft_is_sort(&begin->ba, 1) != 0)		//si stack a est triée retourne 0
 		ft_algo(begin);
+	print_stack(begin);
 	ft_lstdel2(&begin->ba);
 	ft_lstdel2(&begin->bb);
 	ft_lstdel2(&begin->inst);

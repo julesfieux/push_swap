@@ -6,47 +6,46 @@
 #    By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/16 15:04:16 by jfieux            #+#    #+#              #
-#    Updated: 2021/11/10 11:45:38 by jfieux           ###   ########.fr        #
+#    Updated: 2021/11/12 15:23:07 by jfieux           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= push_swap
 
-_SRCS			=	ft_algo.c \
-					ft_build_stack_str.c \
-					ft_build_stack.c \
-					ft_list.c \
-					ft_op_stack.c \
-					ft_short_sort.c \
-					ft_tools_fonction.c \
-					ft_work_a.c \
-					ft_work_b.c \
-					libft_tools.c \
-					main.c
+CC	=	gcc
 
-SRCS = $(addprefix push/, $(_SRCS))
-SRCO = $(SRCS;.c=.o)
+FLAG	=	-Wall -Wextra -Werror -g
 
-OBJS			= $(SRCS:.c=.o)
+SRC	=	ft_algo.c \
+		ft_build_stack_str.c \
+		ft_build_stack.c \
+		ft_list.c \
+		ft_op_stack.c \
+		ft_short_sort.c \
+		ft_tools_fonction.c \
+		ft_work_a.c \
+		ft_work_b.c \
+		libft_tools.c \
+		main.c
 
-CC				= gcc
-RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror -I. -g
+OBJ	=	$(SRC:.c=.o)
 
-all:			$(NAME)
+all:	$(NAME)
 
-$(NAME):		$(OBJS)
-				ar rcs $(NAME) $(OBJS)
+$(NAME):	$(OBJ)
+	@$(CC) $(FLAG) $(OBJ) -o $(NAME)
+
+%.o: %.c
+	@$(CC) $(FLAG) -o $@ -c $<
 
 clean:
-				$(RM) $(OBJS) $(BONUS_OBJS)
+	@rm -f $(OBJ)
+	@echo "OBJS deleted"
 
-fclean:			clean
-				$(RM) $(NAME)
+fclean:	clean
+	@rm -f $(NAME)
+	@echo "$(NAME) deleted"
 
-re:				fclean $(NAME)
+re:	fclean all
 
-bonus:			$(OBJS) $(BONUS_OBJS)
-				ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
-
-.PHONY:			all clean fclean re bonus
+.PHONY:	all, clean, fclean, re
