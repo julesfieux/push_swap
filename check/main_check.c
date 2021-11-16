@@ -1,49 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/22 19:06:40 by jfieux            #+#    #+#             */
-/*   Updated: 2021/11/12 15:43:29 by jfieux           ###   ########.fr       */
+/*   Created: 2021/11/16 11:57:19 by jfieux            #+#    #+#             */
+/*   Updated: 2021/11/16 14:55:16 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-void	print_stack(t_begin *begin)
+int				main(int argc, char **argv)
 {
-	t_stack *stack;
-
-	stack = begin->ba;
-	printf("\nstack a:\n");
-	while (stack != NULL)
-	{
-		printf("%d\n", stack->data);
-		stack = stack->next;
-	}
-}
-
-int		main(int argc, char **argv)
-{
+	char		*str;
 	t_begin		*begin;
 
 	begin = ft_init_begin();
 	begin->bb = NULL;
-	begin->inst = NULL;
-	if (argc == 1)		//pas besoin de trier
+	if (argc == 1)
 		exit(0);
-	if (argc == 2)		//init si la stack est defini en une string
+	if (argc == 2)
 		begin->ba = ft_build_stack_str(argv[1]);
-	else				//init si la stack est défini en plusieurs arguments
+	else
 		begin->ba = ft_build_stack(argc, argv);
-	if (ft_is_sort(&begin->ba, 1) != 0)		//si stack a est triée retourne 0
-		ft_algo(begin);
-	print_stack(begin);
+	str = NULL;
+	while (get_next_line(0, &str) == 1)
+	{
+		ft_move(str, begin);
+		free(str);
+	}
+	free(str);
+	ft_check_stack(&begin->ba, &begin->bb);
 	ft_lstdel2(&begin->ba);
 	ft_lstdel2(&begin->bb);
-	ft_lstdel2(&begin->inst);
 	free(begin);
 	return (0);
 }
