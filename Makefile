@@ -6,7 +6,7 @@
 #    By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/16 15:04:16 by jfieux            #+#    #+#              #
-#    Updated: 2021/11/16 15:07:56 by jfieux           ###   ########.fr        #
+#    Updated: 2021/11/17 10:50:01 by jfieux           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,12 @@ _SRC_P	=	ft_algo.c \
 _SRC_C	=	ft_checker_tools.c \
 			get_next_line_utils.c \
 			get_next_line.c \
-			main_check.c
+			main_check.c \
+			check_op_stack.c \
+			check_list.c \
+			check_libft_tools.c \
+			check_build_stack_str.c \
+			check_build_stack.c 
 
 SRC_P_DIR = push
 SRC_C_DIR = check
