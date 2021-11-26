@@ -41,7 +41,7 @@ static int		ft_count(char *s, t_begin *begin)		//compte le nombre de chiffre de 
 	return (k);
 }
 
-int		*ft_atoi_str(char **s, int n, t_begin *begin, int *tab)
+int		*ft_atoi_str(char **s, int n, t_begin *begin)
 {
 	int			i;
 	int			j;
@@ -82,7 +82,6 @@ int		*ft_atoi_str(char **s, int n, t_begin *begin, int *tab)
 			}
 			free(s);
 			free(temp);
-			free(tab);
 			ft_free(begin);
 			exit(0);
 		}
@@ -97,10 +96,8 @@ static int		*ft_fill_tab(char *str, int n, t_begin *begin)
 	int		*tab;
 	char	**s;
 
-	if (!(tab = (int *)malloc(sizeof(int) * (n + 1))))		//je ne crois pas que le '+1' est du sens
-		exit(1);
 	s = ft_split(str, ' ', 0, 0);
-	tab = ft_atoi_str(s, n, begin, tab);
+	tab = ft_atoi_str(s, n, begin);
 	while (n >= 0)
 	{
 		free(s[n]);
