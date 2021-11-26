@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 12:05:53 by jfieux            #+#    #+#             */
-/*   Updated: 2021/11/17 10:46:32 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/11/22 16:05:49 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ char		**ft_split(char const *s, char c, int i, int j)
 	return (res);
 }
 
-int		ft_atoi(char *str)
+int		ft_atoi(char *str, t_begin *begin)
 {
 	int			i;
 	int			sign;
@@ -126,10 +126,13 @@ int		ft_atoi(char *str)
 	{
 		res = (res * 10) + (str[i] - '0');
 		i++;
-		if (sign == 1 && res > 922337203685477580)
-			return (-1);
-		else if (res > 922337203685477580)
-			return (0);
 	}
-	return (res * sign);
+	res = res * sign;
+	if (res > 2147483647 || res < -2147483648)
+	{
+		write(2, "Error\n", 6);
+		ft_free(begin);
+		exit(0);
+	}
+	return (res);
 }

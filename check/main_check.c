@@ -6,11 +6,19 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 11:57:19 by jfieux            #+#    #+#             */
-/*   Updated: 2021/11/17 10:59:20 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/11/19 13:04:51 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+void	ft_free(t_begin *begin)
+{
+	ft_lstdel2(&begin->ba);
+	ft_lstdel2(&begin->bb);
+	ft_lstdel2(&begin->inst);
+	free(begin);
+}
 
 int				main(int argc, char **argv)
 {
@@ -22,9 +30,9 @@ int				main(int argc, char **argv)
 	if (argc == 1)
 		exit(0);
 	if (argc == 2)
-		begin->ba = ft_build_stack_str(argv[1]);
+		begin->ba = ft_build_stack_str(argv[1], begin);
 	else
-		begin->ba = ft_build_stack(argc, argv);
+		begin->ba = ft_build_stack(argc, argv, begin);
 	str = NULL;
 	while (get_next_line(0, &str) == 1)
 	{
@@ -32,9 +40,6 @@ int				main(int argc, char **argv)
 		free(str);
 	}
 	free(str);
-	ft_check_stack(&begin->ba, &begin->bb);
-	ft_lstdel2(&begin->ba);
-	ft_lstdel2(&begin->bb);
-	free(begin);
+	ft_free(begin);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 19:04:42 by jfieux            #+#    #+#             */
-/*   Updated: 2021/11/12 15:25:20 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/11/22 15:59:56 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ typedef struct		s_begin
 
 t_begin				*ft_init_begin(void);
 void				ft_bzero(void *s, size_t n);
-t_stack				*ft_build_stack_str(char *argv);
+t_stack				*ft_build_stack_str(char *argv, t_begin *begin);
 char				**ft_split(char const *s, char c, int i, int j);
-int					ft_atoi(char *str);
-void				ft_check_doublon_str(int *tab, int i, int n);
+int					ft_atoi(char *str, t_begin *begin);
+void				ft_check_doublon_str(int *tab, int i, int n, t_begin *begin);
 t_stack				*ft_stacknew(int n);
-t_stack				*ft_build_stack(int argc, char **argv);
+t_stack				*ft_build_stack(int argc, char **argv, t_begin *begin);
 int					ft_is_sort(t_stack **begin, int stack);
 int					ft_find_len(t_stack **bi);
 void				ft_sort_2_elem(t_begin *begin);
@@ -55,6 +55,7 @@ t_stack				*ft_push_stack(t_stack **bf, t_stack **bi);
 void				ft_work_a(t_begin *begin, int len);
 void				ft_work_b(t_begin *begin, int len);
 void				ft_sort_min_b(t_begin *begin);
+void				ft_free(t_begin *begin);
 void				ft_lstdel2(t_stack **begin);
 
 
