@@ -131,7 +131,7 @@ t_stack			*ft_build_stack_str(char *argv, t_begin *begin)
 		n = tab[i];
 		ft_check_doublon_str(tab, i, ft_count(argv, begin), begin);
 		ea = ft_stacknew(n);
-		ea->next = ba;	//je ne comprends pas pk on fait dans cet ordre
+		ea->next = ba;
 		ba = ea;
 		i--;
 	}

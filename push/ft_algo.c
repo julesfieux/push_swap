@@ -53,14 +53,15 @@ static void	ft_print_instruction(t_begin *begin)
 	e = begin->inst;
 	while (e != NULL)
 	{
+		suiv = NULL;
 		if (e->next != NULL)
 			suiv = e->next;
-		if (e->data == 1 && suiv && suiv->data != 2)
+		if (e->data == 1 && (!suiv || suiv->data != 2))
 			printf("sa\n");
-		else if (e->data == 2 && suiv && suiv->data != 1)
+		else if (e->data == 2 && (!suiv || suiv->data != 1))
 			printf("sb\n");
-		else if ((e->data == 1 && suiv && suiv->data == 2)
-				|| (e->data == 2 && suiv && suiv->data == 1))
+		else if ((e->data == 1 && (!suiv || suiv->data == 2))
+				|| (e->data == 2 && (!suiv || suiv->data == 1)))
 		{
 			printf("ss\n");
 			e = e->next;
