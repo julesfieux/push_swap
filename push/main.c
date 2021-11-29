@@ -37,11 +37,11 @@ int		main(int argc, char **argv)
 {
 	t_begin		*begin;
 
+	if (argc == 1)		//pas d'argument
+		exit(0);
 	begin = ft_init_begin();
 	begin->bb = NULL;
 	begin->inst = NULL;
-	if (argc == 1)		//pas besoin de trier
-		exit(0);
 	if (argc == 2)		//init si la stack est defini en une string
 		begin->ba = ft_build_stack_str(argv[1], begin);
 	else				//init si la stack est défini en plusieurs arguments

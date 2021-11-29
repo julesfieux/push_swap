@@ -122,10 +122,22 @@ int		ft_atoi(char *str, t_begin *begin)
 			sign = -sign;
 		i++;
 	}
+	if (str[i] > '9' || str[i] < '0')
+	{
+		write(2, "Error\n", 6);
+		ft_free(begin);
+		exit(0);
+	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		res = (res * 10) + (str[i] - '0');
 		i++;
+	}
+	if ((str[i] > '9' || str[i] < '0') && str[i] != '\0')
+	{
+		write(2, "Error\n", 6);
+		ft_free(begin);
+		exit(0);
 	}
 	res = res * sign;
 	if (res > 2147483647 || res < -2147483648)

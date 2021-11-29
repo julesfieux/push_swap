@@ -120,7 +120,6 @@ t_stack			*ft_build_stack_str(char *argv, t_begin *begin)
 	i = ft_count(argv, begin);
 	if (i == 0)
 	{
-		write(2, "Error\n", 6);
 		ft_free(begin);
 		exit(0);
 	}
