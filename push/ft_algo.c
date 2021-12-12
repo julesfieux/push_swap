@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 09:21:46 by jfieux            #+#    #+#             */
-/*   Updated: 2021/11/23 11:57:47 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/12/12 16:44:19 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,25 +43,25 @@ static void	ft_print_instruction_2(t_stack *e)
 		printf("rra\n");
 	else if (e->data == 8)
 		printf("rrb\n");
-}		//il manque rr et rrr
+}
 
 static void	ft_print_instruction(t_begin *begin)
 {
 	t_stack		*e;		//les instructions
-	t_stack		*suiv;	//pk pas next?
+	t_stack		*next;
 
 	e = begin->inst;
 	while (e != NULL)
 	{
-		suiv = NULL;
+		next = NULL;
 		if (e->next != NULL)
-			suiv = e->next;
-		if (e->data == 1 && (!suiv || suiv->data != 2))
+			next = e->next;
+		if (e->data == 1 && (!next || next->data != 2))
 			printf("sa\n");
-		else if (e->data == 2 && (!suiv || suiv->data != 1))
+		else if (e->data == 2 && (!next || next->data != 1))
 			printf("sb\n");
-		else if ((e->data == 1 && (!suiv || suiv->data == 2))
-				|| (e->data == 2 && (!suiv || suiv->data == 1)))
+		else if ((e->data == 1 && (!next || next->data == 2))
+				|| (e->data == 2 && (!next || next->data == 1)))
 		{
 			printf("ss\n");
 			e = e->next;

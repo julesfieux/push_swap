@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 12:08:51 by jfieux            #+#    #+#             */
-/*   Updated: 2021/11/22 15:54:54 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/12/12 15:53:19 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ static int		ft_count(char *s, t_begin *begin)		//compte le nombre de chiffre de 
 	k = 0;
 	while (s[i] != '\0')
 	{
-		if (s[i] == ' ' && s[i] != '\0')		//le '\0' n'a pas de sens
+		if (s[i] == ' ')
 			i++;
 		else if (((s[i] >= '0' && s[i] <= '9') || s[i] == '+' || s[i] == '-')
-			&& (i == 0 || s[i - 1] == ' ') && s[i] != '\0')		//pareil le '\0' est inutile
+			&& (i == 0 || s[i - 1] == ' '))
 		{
 			i++;
 			k++;
@@ -35,7 +35,7 @@ static int		ft_count(char *s, t_begin *begin)		//compte le nombre de chiffre de 
 			ft_free(begin);
 			exit(1);
 		}
-		else if (s[i] >= '0' && s[i] <= '9' && s[i] != '\0')		//'\0'
+		else if (s[i] >= '0' && s[i] <= '9')
 			i++;
 	}
 	return (k);

@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 18:07:45 by jfieux            #+#    #+#             */
-/*   Updated: 2021/11/04 10:24:01 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/12/12 16:35:54 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,25 +79,23 @@ int		ft_median(t_stack **begin, int stack, int n)
 	t_stack	*tmp;	//stack a
 	int		i;		//count
 	int		*tab;	//tableau des chiffre de la stack a
-	int		len;	//inutile, autant utiliser n	//len stack a
 	int		median;	//chiffre au milieu de la stack dans l'odre croissant
 
 	i = 0;
-	len = n;
-	if (!(tab = (int *)malloc(sizeof(int) * (len + 1))))
+	if (!(tab = (int *)malloc(sizeof(int) * (n + 1))))
 		exit(1);
 	tmp = *begin;
-	while (i < len)
+	while (i < n)
 	{
 		tab[i] = tmp->data;
 		i++;
 		tmp = tmp->next;
 	}
-	ft_sort_tab(tab, len);	//trie tout le tab
-	if (stack == 2 && len % 2 == 0)
-		median = tab[(len / 2) - 1];
+	ft_sort_tab(tab, n);	//trie tout le tab
+	if (stack == 2 && n % 2 == 0)
+		median = tab[(n / 2) - 1];
 	else
-		median = tab[(len / 2)];
+		median = tab[(n / 2)];
 	free(tab);
 	return (median);
 }

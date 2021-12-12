@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 10:12:15 by jfieux            #+#    #+#             */
-/*   Updated: 2021/11/12 15:42:52 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/12/12 16:36:56 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ static void		ft_median_sort(t_begin *begin, int len, int *r, int *p)
 			begin->bb = ft_push_stack(&begin->bb, &begin->ba);
 			begin->ba = tmp;
 			ft_instruction(&begin->inst, 4);
-			*p = *p + 1;	//simplification *p++
+			*p = *p + 1;
 		}
 		else
 		{
 			begin->ba = ft_rotate_stack(&begin->ba);
 			ft_instruction(&begin->inst, 5);
-			*r = *r + 1;	//simplification *r++
+			*r = *r + 1;
 		}
 	}
 }

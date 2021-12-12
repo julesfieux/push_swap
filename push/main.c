@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 19:06:40 by jfieux            #+#    #+#             */
-/*   Updated: 2021/11/22 15:54:47 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/12/12 15:46:33 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_free(t_begin *begin)
 
 void	print_stack(t_begin *begin)
 {
-	t_stack *stack;
+	t_stack	*stack;
 
 	stack = begin->ba;
 	printf("\nstack a:\n");
@@ -33,7 +33,7 @@ void	print_stack(t_begin *begin)
 	}
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_begin		*begin;
 
