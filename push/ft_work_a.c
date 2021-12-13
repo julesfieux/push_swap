@@ -6,20 +6,20 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 10:12:15 by jfieux            #+#    #+#             */
-/*   Updated: 2021/12/12 16:36:56 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/12/12 17:27:31 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void		ft_median_sort(t_begin *begin, int len, int *r, int *p)
+static void	ft_median_sort(t_begin *begin, int len, int *r, int *p)
 {
-	int		i;		//count
+	int		i;
 	int		median;
 	t_stack	*tmp;
 
 	i = 0;
-	median = ft_median(&begin->ba, 1, len);	//trouve le chiffre median
+	median = ft_median(&begin->ba, 1, len);
 	while (ft_compare_with_median(begin, len - i, median, 1) != 0 && i++ < len)
 	{
 		if (begin->ba->data < median)
@@ -39,9 +39,9 @@ static void		ft_median_sort(t_begin *begin, int len, int *r, int *p)
 	}
 }
 
-static void		ft_place_a(t_begin *begin, int *r)
+static void	ft_place_a(t_begin *begin, int *r)
 {
-	int		lena;	//new len de la stack a
+	int		lena;
 
 	lena = ft_find_len(&begin->ba);
 	if (*r > (lena / 2) && lena > 3)
@@ -64,7 +64,7 @@ static void		ft_place_a(t_begin *begin, int *r)
 	}
 }
 
-void			ft_work_a(t_begin *begin, int len)
+void	ft_work_a(t_begin *begin, int len)
 {
 	int			r;
 	int			p;
@@ -77,11 +77,11 @@ void			ft_work_a(t_begin *begin, int len)
 		ft_sort_min_a(begin);
 		return ;
 	}
-	if (begin->ba != NULL && ft_is_sort(&begin->ba, 1) == 0)	//si triée, arrete la
+	if (begin->ba != NULL && ft_is_sort(&begin->ba, 1) == 0)
 		return ;
-	ft_median_sort(begin, len, &r, &p);		//premier trie en fonction du chiffre median
-	ft_place_a(begin, &r);		//remet la stack a dans le meme ordre qu'avant median_sort mais sans les chiffres push dans la stack b
-	ft_work_a(begin, (len - p));	//recursive de ce qu'on vient de faire
+	ft_median_sort(begin, len, &r, &p);
+	ft_place_a(begin, &r);
+	ft_work_a(begin, (len - p));
 	ft_work_b(begin, p);
 	while (p-- && begin->bb != NULL)
 	{

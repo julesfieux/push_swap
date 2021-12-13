@@ -6,13 +6,13 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 17:56:18 by jfieux            #+#    #+#             */
-/*   Updated: 2021/12/12 15:58:41 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/12/12 17:39:52 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		ft_check_doublon_str(int *tab, int i, int n, t_begin *begin)
+void	ft_check_doublon_str(int *tab, int i, int n, t_begin *begin)
 {
 	int		j;
 
@@ -48,7 +48,7 @@ static void	ft_check_doublon(char **argv, int i, int n, t_begin *begin)
 	}
 }
 
-t_stack		*ft_build_stack(int argc, char **argv, t_begin *begin)
+t_stack	*ft_build_stack(int argc, char **argv, t_begin *begin)
 {
 	t_stack		*ea;
 	t_stack		*ba;

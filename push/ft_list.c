@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 12:01:24 by jfieux            #+#    #+#             */
-/*   Updated: 2021/12/12 15:50:01 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/12/12 17:39:24 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_begin	*ft_init_begin(void)
 	begin = malloc(sizeof(t_begin));
 	if (!begin)
 		exit(1);
-	ft_bzero(begin, sizeof(t_begin));		//initialise begin à 0
+	ft_bzero(begin, sizeof(t_begin));
 	return (begin);
 }
 

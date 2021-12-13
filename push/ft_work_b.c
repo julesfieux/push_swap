@@ -6,13 +6,13 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 11:26:48 by jfieux            #+#    #+#             */
-/*   Updated: 2021/11/10 11:33:27 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/12/12 17:26:26 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void		ft_median_sort(t_begin *begin, int len, int *r, int *p)
+static void	ft_median_sort(t_begin *begin, int len, int *r, int *p)
 {
 	int		i;
 	int		median;
@@ -39,7 +39,7 @@ static void		ft_median_sort(t_begin *begin, int len, int *r, int *p)
 	}
 }
 
-static void		ft_place_b(t_begin *begin, int *r)
+static void	ft_place_b(t_begin *begin, int *r)
 {
 	int		lenb;
 
@@ -64,7 +64,7 @@ static void		ft_place_b(t_begin *begin, int *r)
 	}
 }
 
-void			ft_work_b(t_begin *begin, int len)
+void	ft_work_b(t_begin *begin, int len)
 {
 	int			r;
 	int			p;

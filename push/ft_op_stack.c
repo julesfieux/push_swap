@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 09:50:58 by jfieux            #+#    #+#             */
-/*   Updated: 2021/11/04 10:25:46 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/12/12 17:38:52 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_stack	*ft_swap_stack(t_stack **bi)
 {
-	t_stack		*elem;		//la stack a
+	t_stack		*elem;
 	int			tmp;
 
 	elem = *bi;
@@ -27,7 +27,7 @@ t_stack	*ft_swap_stack(t_stack **bi)
 	return (*bi);
 }
 
-t_stack	*ft_push_stack(t_stack **bf, t_stack **bi)	//push le premiere elem de bi sur bf
+t_stack	*ft_push_stack(t_stack **bf, t_stack **bi)
 {
 	t_stack		*elem;
 

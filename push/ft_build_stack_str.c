@@ -6,16 +6,16 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 12:08:51 by jfieux            #+#    #+#             */
-/*   Updated: 2021/12/12 15:53:19 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/12/13 10:52:05 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int		ft_count(char *s, t_begin *begin)		//compte le nombre de chiffre de la stack
+int	ft_count(char *s, t_begin *begin)
 {
-	int		i;	//count
-	int		k;	//nb de chiffre dans la stack
+	int		i;
+	int		k;
 
 	i = 0;
 	k = 0;
@@ -41,46 +41,62 @@ static int		ft_count(char *s, t_begin *begin)		//compte le nombre de chiffre de 
 	return (k);
 }
 
-int		*ft_atoi_str(char **s, int n, t_begin *begin)
+long int	ft_atoi_str_2(char **s, int j)
 {
 	int			i;
-	int			j;
 	int			sign;
+	long int	res;
+
+	i = 0;
+	sign = 1;
+	res = 0;
+	while ((s[j][i] >= 9 && s[j][i] <= 13) || s[j][i] == ' ')
+		i++;
+	if (s[j][i] == '-' || s[j][i] == '+')
+	{
+		if (s[j][i] == '-')
+			sign = -sign;
+		i++;
+	}
+	while (s[j][i] >= '0' && s[j][i] <= '9')
+	{
+		res = (res * 10) + (s[j][i] - '0');
+		i++;
+	}
+	res = res * sign;
+	return (res);
+}
+
+void	ft_atoi_str_3(char **s, int n)
+{
+	int	i;
+
+	i = 0;
+	write(2, "Error\n", 6);
+	while (i < n)
+	{
+		free(s[i]);
+		i++;
+	}
+	free(s);
+}
+
+int	*ft_atoi_str(char **s, int n, t_begin *begin)
+{
+	int			j;
 	int			*temp;
 	long int	res;
 
 	j = 0;
-	if (!(temp = malloc(sizeof(int) * n + 1)))
+	temp = malloc(sizeof(int) * n + 1);
+	if (!temp)
 		exit(0);
 	while (j < n)
 	{
-		i = 0;
-		sign = 1;
-		res = 0;
-		while ((s[j][i] >= 9 && s[j][i] <= 13) || s[j][i] == ' ')
-			i++;
-		if (s[j][i] == '-' || s[j][i] == '+')
+		res = ft_atoi_str_2(s, j);
+		if (res > 2147483647 || res < -2147483648)
 		{
-			if (s[j][i] == '-')
-				sign = -sign;
-			i++;
-		}
-		while (s[j][i] >= '0' && s[j][i] <= '9')
-		{
-			res = (res * 10) + (s[j][i] - '0');
-			i++;
-		}
-		res = res * sign;
-		if (res > 2147483647 || (sign == -1 && res < -2147483648))
-		{
-			i = 0;
-			write(2, "Error\n", 6);
-			while (i < n)
-			{
-				free(s[i]);
-				i++;
-			}
-			free(s);
+			ft_atoi_str_3(s, n);
 			free(temp);
 			ft_free(begin);
 			exit(0);
@@ -91,7 +107,7 @@ int		*ft_atoi_str(char **s, int n, t_begin *begin)
 	return (temp);
 }
 
-static int		*ft_fill_tab(char *str, int n, t_begin *begin)
+static int	*ft_fill_tab(char *str, int n, t_begin *begin)
 {
 	int		*tab;
 	char	**s;
@@ -107,24 +123,22 @@ static int		*ft_fill_tab(char *str, int n, t_begin *begin)
 	return (tab);
 }
 
-t_stack			*ft_build_stack_str(char *argv, t_begin *begin)
+t_stack	*ft_build_stack_str(char *argv, t_begin *begin, int i)
 {
 	t_stack		*ea;
 	t_stack		*ba;
 	int			n;
-	int			i;	//nb de chiffre dans la stack de start
 	int			*tab;
 
 	ea = NULL;
 	ba = NULL;
-	i = ft_count(argv, begin);
 	if (i == 0)
 	{
 		ft_free(begin);
 		exit(0);
 	}
 	tab = ft_fill_tab(argv, i, begin);
-	i--;		//i est donc au dernier chiffre de la stack
+	i--;
 	while (i >= 0)
 	{
 		n = tab[i];

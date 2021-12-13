@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 09:21:46 by jfieux            #+#    #+#             */
-/*   Updated: 2021/12/12 16:44:19 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/12/13 10:55:38 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_instruction(t_stack **inst, int n)
 {
-	t_stack		*e;
-	t_stack		*new;
+	t_stack	*e;
+	t_stack	*new;
 
 	e = *inst;
 	if (e != NULL)
@@ -47,8 +47,8 @@ static void	ft_print_instruction_2(t_stack *e)
 
 static void	ft_print_instruction(t_begin *begin)
 {
-	t_stack		*e;		//les instructions
-	t_stack		*next;
+	t_stack	*e;
+	t_stack	*next;
 
 	e = begin->inst;
 	while (e != NULL)
@@ -61,7 +61,7 @@ static void	ft_print_instruction(t_begin *begin)
 		else if (e->data == 2 && (!next || next->data != 1))
 			printf("sb\n");
 		else if ((e->data == 1 && (!next || next->data == 2))
-				|| (e->data == 2 && (!next || next->data == 1)))
+			|| (e->data == 2 && (!next || next->data == 1)))
 		{
 			printf("ss\n");
 			e = e->next;
@@ -74,7 +74,7 @@ static void	ft_print_instruction(t_begin *begin)
 
 int	ft_algo(t_begin *begin)
 {
-	int			n;		//taille de la stack a
+	int	n;
 
 	n = ft_find_len(&begin->ba);
 	if (n == 1)
@@ -84,7 +84,7 @@ int	ft_algo(t_begin *begin)
 	else if (n == 3)
 		ft_sort_3_elem(begin);
 	else
-		ft_work_a(begin, ft_find_len(&begin->ba));	//pk ne pas mettre n?
+		ft_work_a(begin, n);
 	ft_print_instruction(begin);
 	return (0);
 }
