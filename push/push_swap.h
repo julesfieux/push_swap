@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 19:04:42 by jfieux            #+#    #+#             */
-/*   Updated: 2021/12/12 17:48:53 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/12/13 11:01:06 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_begin
 }	t_begin;
 
 t_begin	*ft_init_begin(void);
-void	ft_bzero(void *s, size_t n);
 t_stack	*ft_build_stack_str(char *argv, t_begin *begin, int i);
 char	**ft_split(char const *s, char c, int i, int j);
 int		ft_atoi(char *str, t_begin *begin);

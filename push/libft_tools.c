@@ -6,24 +6,11 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 12:05:53 by jfieux            #+#    #+#             */
-/*   Updated: 2021/12/12 17:24:37 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/12/13 11:00:51 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_bzero(void *s, size_t n)
-{
-	char	*s1;
-
-	s1 = (char *)s;
-	while (n > 0)
-	{
-		*s1 = 0;
-		s1++;
-		n--;
-	}
-}
 
 static char	**ft_init(const char *s, char c, char **res, int i)
 {

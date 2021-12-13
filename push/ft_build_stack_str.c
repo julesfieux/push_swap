@@ -6,40 +6,11 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 12:08:51 by jfieux            #+#    #+#             */
-/*   Updated: 2021/12/13 10:52:05 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/12/13 11:03:50 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_count(char *s, t_begin *begin)
-{
-	int		i;
-	int		k;
-
-	i = 0;
-	k = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] == ' ')
-			i++;
-		else if (((s[i] >= '0' && s[i] <= '9') || s[i] == '+' || s[i] == '-')
-			&& (i == 0 || s[i - 1] == ' '))
-		{
-			i++;
-			k++;
-		}
-		else if ((s[i] < '0' || s[i] > '9') && s[i] != ' ')
-		{
-			write(2, "Error\n", 6);
-			ft_free(begin);
-			exit(1);
-		}
-		else if (s[i] >= '0' && s[i] <= '9')
-			i++;
-	}
-	return (k);
-}
 
 long int	ft_atoi_str_2(char **s, int j)
 {
