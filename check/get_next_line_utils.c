@@ -6,15 +6,15 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 10:44:51 by jfieux            #+#    #+#             */
-/*   Updated: 2021/11/16 14:33:58 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/12/14 11:31:47 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int		ft_strlen(const char *str)
+int	ft_strlen(const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str)
@@ -34,7 +34,8 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (!s1 || !s2)
 		return (0);
 	len = (ft_strlen(s1) + ft_strlen(s2));
-	if (!(res = malloc(sizeof(char) * (len + 1))))
+	res = malloc(sizeof(char) * (len + 1));
+	if (!res)
 		return (0);
 	i = 0;
 	j = 0;
@@ -48,9 +49,9 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (res);
 }
 
-int		ft_found_return(char *str)
+int	ft_found_return(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str)

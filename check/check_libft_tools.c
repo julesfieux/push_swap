@@ -6,29 +6,16 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 12:05:53 by jfieux            #+#    #+#             */
-/*   Updated: 2021/11/22 16:05:49 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/12/14 11:49:11 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	ft_bzero(void *s, size_t n)
-{
-	char *s1;
-
-	s1 = (char *)s;
-	while (n > 0)
-	{
-		*s1 = 0;
-		s1++;
-		n--;
-	}
-}
-
 static char	**ft_init(const char *s, char c, char **res, int i)
 {
-	int j;
-	int k;
+	int	j;
+	int	k;
 
 	k = 0;
 	while (s[i])
@@ -54,8 +41,8 @@ static char	**ft_init(const char *s, char c, char **res, int i)
 
 static int	ft_malword(int c, int i, const char *s, char **res)
 {
-	int j;
-	int k;
+	int	j;
+	int	k;
 
 	k = 0;
 	while (s[i])
@@ -79,7 +66,7 @@ static int	ft_malword(int c, int i, const char *s, char **res)
 	return (1);
 }
 
-char		**ft_split(char const *s, char c, int i, int j)
+char	**ft_split(char const *s, char c, int i, int j)
 {
 	char	**res;
 
@@ -105,7 +92,29 @@ char		**ft_split(char const *s, char c, int i, int j)
 	return (res);
 }
 
-int		ft_atoi(char *str, t_begin *begin)
+int	atoi_2(char *str, t_begin *begin, int i, long int res)
+{
+	if (str[i] > '9' || str[i] < '0')
+	{
+		write(2, "Error\n", 6);
+		ft_free(begin);
+		exit(0);
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res = (res * 10) + (str[i] - '0');
+		i++;
+	}
+	if ((str[i] > '9' || str[i] < '0') && str[i] != '\0')
+	{
+		write(2, "Error\n", 6);
+		ft_free(begin);
+		exit(0);
+	}
+	return (res);
+}
+
+int	ft_atoi(char *str, t_begin *begin)
 {
 	int			i;
 	int			sign;
@@ -122,11 +131,7 @@ int		ft_atoi(char *str, t_begin *begin)
 			sign = -sign;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		res = (res * 10) + (str[i] - '0');
-		i++;
-	}
+	res = atoi_2(str, begin, i, res);
 	res = res * sign;
 	if (res > 2147483647 || res < -2147483648)
 	{

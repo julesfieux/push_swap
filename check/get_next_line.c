@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 10:44:24 by jfieux            #+#    #+#             */
-/*   Updated: 2021/11/16 14:33:23 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/12/14 11:29:58 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ char	*ft_new_line(char *str)
 	i = 0;
 	while (str[i] && str[i] != '\n')
 		i++;
-	if (!(res = malloc(sizeof(char) * (i + 1))))
+	res = malloc(sizeof(char) * (i + 1));
+	if (!res)
 		return (0);
 	i = 0;
 	while (str[i] && str[i] != '\n')
@@ -50,7 +51,8 @@ char	*ft_new_save(char *str)
 		free(str);
 		return (0);
 	}
-	if (!(res = malloc(sizeof(char) * ((ft_strlen(str) - i) + 1))))
+	res = malloc(sizeof(char) * ((ft_strlen(str) - i) + 1));
+	if (!res)
 		return (0);
 	i++;
 	j = 0;
@@ -61,18 +63,19 @@ char	*ft_new_save(char *str)
 	return (res);
 }
 
-int		ft_mall_save(char **save)
+int	ft_mall_save(char **save)
 {
 	if (!*save)
 	{
-		if ((*save = malloc(sizeof(char) * 1)) == NULL)
+		*save = malloc(sizeof(char) * 1);
+		if (!*save)
 			return (-1);
 		*save[0] = '\0';
 	}
 	return (1);
 }
 
-int		get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	int			ret;
 	char		buf[BUFFER_SIZE + 1];
@@ -85,7 +88,8 @@ int		get_next_line(int fd, char **line)
 		return (-1);
 	while (ft_found_return(save) == 0 && ret != 0)
 	{
-		if ((ret = read(fd, buf, BUFFER_SIZE)) == -1)
+		ret = read(fd, buf, BUFFER_SIZE);
+		if (ret == -1)
 		{
 			free(save);
 			return (-1);
