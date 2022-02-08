@@ -92,7 +92,7 @@ char	**ft_split(char const *s, char c, int i, int j)
 	return (res);
 }
 
-int	atoi_2(char *str, t_begin *begin, int i, long int res)
+long int	atoi_2(char *str, t_begin *begin, long int i, long int res)
 {
 	if (str[i] > '9' || str[i] < '0')
 	{
